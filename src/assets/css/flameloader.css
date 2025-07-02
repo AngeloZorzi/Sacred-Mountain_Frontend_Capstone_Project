@@ -1,0 +1,18 @@
+@keyframes flameAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -3072px 0;
+  }
+}
+
+.pixel-loader-sprite {
+  width: 256px;
+  height: 330px;
+  background-image: url("../flame-loader.png");
+  background-size: 3072px 330px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  animation: flameAnimation 1s steps(12) infinite;
+}

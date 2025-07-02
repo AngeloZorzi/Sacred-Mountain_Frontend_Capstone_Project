@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.startscreen {
+  font-family: "Press Start 2P", monospace;
+  user-select: none;
+  cursor: default;
+}
+.font-pixel {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9d1d9;
+  text-shadow: 1px 1px 0 #3a3f58, 2px 2px 6px #5e677f;
+}
+
+.pixel-box {
+  background: rgba(25, 22, 38, 0.9);
+  border: 2px solid #586e75;
+  border-radius: 6px;
+  box-shadow: 0 0 8px 2px rgba(88, 110, 117, 0.5);
+  padding: 2rem;
+}
+
+.pixel-input {
+  background: #2b2a40;
+  border: 2px solid #586e75;
+  color: #c9d1d9;
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.pixel-input:focus {
+  border-color: #728ca3;
+  box-shadow: 0 0 6px 2px #728ca3;
+}
+
+.pixel-button {
+  background: #556a8a;
+  border: 2px solid #384a63;
+  color: #d6dce8;
+  text-transform: uppercase;
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 0.15em;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 3px 0 #384a63;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.pixel-button-logout {
+  background: #556a8a;
+  border: 2px solid #384a63;
+  color: #d6dce8;
+  text-transform: uppercase;
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 0.15em;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 3px 0 #384a63;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pixel-button:hover {
+  background: #728ca3;
+  border-color: #4a5e7d;
+  box-shadow: 0 4px 0 #4a5e7d;
+}
+.pixel-button-logout:hover {
+  background: #ea4444;
+  border-color: #b91c1c;
+  box-shadow: 0 4px 0 #733535;
+}
+
+.pixel-link {
+  color: #728ca3;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.pixel-link:hover {
+  color: #a4b0c3;
+}
+
+.dashboard-title {
+  text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #ff7f00, 6px 6px 0 #ffff00;
+  letter-spacing: 0.15em;
+}
+
+.dashboard-card {
+  @apply bg-gray-800 bg-opacity-60 rounded-lg p-6 border-2 shadow-lg transition cursor-default;
+  border-color: #b91c1c;
+}
+
+.dashboard-card:hover {
+  @apply bg-red-900 cursor-pointer;
+}
+
+.dashboard-card.leaderboard {
+  @apply border-yellow-600 cursor-pointer;
+  background-color: rgba(202, 138, 4, 0.5);
+}
+.dashboard-card.leaderboard:hover {
+  @apply bg-yellow-900;
+  background-color: rgba(202, 138, 4, 0.8);
+}
+
+.dashboard-card.admin {
+  @apply border-blue-700 cursor-pointer;
+  background-color: rgba(29, 216, 166, 0.5);
+}
+.dashboard-card.admin:hover {
+  @apply bg-blue-900;
+  background-color: rgba(29, 216, 197, 0.801);
+}
+
+.dashboard-card h2 {
+  @apply text-xl font-bold mb-3 tracking-widest text-center;
+  color: #ffd700;
+}
+
+.leaderboard-list li {
+  @apply flex justify-between px-4;
+  color: #fcd34d;
+}
+
+.truncate-text {
+  @apply truncate;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 p-4;
+}
+
+.modal-content {
+  @apply bg-gray-900 rounded-lg max-w-4xl w-full max-h-full overflow-auto p-8 relative;
+}
+
+.modal-close-btn {
+  @apply absolute top-4 right-4 text-white text-3xl font-bold hover:text-red-600 cursor-pointer;
+}
+
+.modal-title {
+  @apply text-4xl mb-6 tracking-widest text-yellow-400 text-center font-bold;
+}
