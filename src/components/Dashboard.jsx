@@ -9,6 +9,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showStoryModal, setShowStoryModal] = useState(false);
   const MIN_LOADING_TIME = 2000;
   const start = Date.now();
 
@@ -94,7 +95,13 @@ function Dashboard() {
             </p>
           </div>
 
-          <div className="dashboard-card border-red-700">
+          <div
+            className="dashboard-card border-red-700 hover:bg-indigo-900 transition cursor-pointer"
+            onClick={() => setShowStoryModal(true)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && setShowStoryModal(true)}
+          >
             <h2>Storia</h2>
             <p className="text-lg text-center truncate-text">
               {user.storyState || "Nessuna storia salvata"}
@@ -125,6 +132,52 @@ function Dashboard() {
           LOGOUT
         </button>
       </div>
+
+      {showStoryModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-70 flex justify-center items-center"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="pixel-box w-full max-w-2xl relative animate-fade-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-4 text-3xl text-indigo-300 hover:text-red-500 focus:outline-none"
+              onClick={() => setShowStoryModal(false)}
+              aria-label="Chiudi Storia"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-2xl mb-4 text-center font-pixel text-indigo-300">
+              STORIA SALVATA
+            </h2>
+
+            <div className="max-h-64 overflow-y-auto text-sm bg-gray-800 p-4 rounded border border-gray-700 text-indigo-100 whitespace-pre-wrap">
+              {user.storyState || "Nessuna storia salvata."}
+            </div>
+
+            <div className="mt-6 flex justify-end space-x-4">
+              <button
+                className="pixel-button"
+                onClick={() => setShowStoryModal(false)}
+              >
+                Chiudi
+              </button>
+              {user.storyState && (
+                <button
+                  className="pixel-button"
+                  onClick={() => navigate("/game")}
+                >
+                  Riprendi
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {showModal && (
         <div
