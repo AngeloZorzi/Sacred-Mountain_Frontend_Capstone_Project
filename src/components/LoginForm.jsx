@@ -18,7 +18,7 @@ function LoginForm() {
     try {
       const res = await axiosClient.post("/api/auth/login", form);
       localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
+      navigate("/landing");
       // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError("Credenziali errate o utente non esistente");
