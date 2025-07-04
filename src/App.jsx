@@ -6,6 +6,8 @@ import RegisterForm from "./components/RegisterForm";
 import Dashboard from "./components/Dashboard";
 import AdminPage from "./components/AdminPage";
 import LandingPage from "./components/LandingPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
 
 export default function App() {
   return (
@@ -14,8 +16,22 @@ export default function App() {
         <Route path="/" element={<StartScreen />} />
         <Route path="/auth" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin/users" element={<AdminPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <AdminRoute>
+              <AdminPage />
+            </AdminRoute>
+          }
+        />
         <Route path="/landing" element={<LandingPage />} />
       </Routes>
     </Router>

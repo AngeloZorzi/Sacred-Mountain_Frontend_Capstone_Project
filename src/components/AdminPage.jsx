@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosClient from "../api/axiosClient";
+import Toast from "./Toast";
 
 function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -7,6 +9,9 @@ function AdminPage() {
   const [error, setError] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  const [toast, setToast] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosClient
@@ -31,8 +36,9 @@ function AdminPage() {
       setUsers((prev) =>
         prev.map((u) => (u.id === id ? { ...u, score: 0, storyState: "" } : u))
       );
+      setToast({ message: "Utente resettato con successo", type: "success" });
     } catch {
-      alert("Errore nel reset dell'utente");
+      setToast({ message: "Errore nel reset dell'utente", type: "error" });
     }
   };
 
@@ -44,13 +50,18 @@ function AdminPage() {
     try {
       await axiosClient.delete(`/api/admin/users/${userToDelete.id}`);
       setUsers((prev) => prev.filter((u) => u.id !== userToDelete.id));
+      setToast({ message: "Utente eliminato con successo", type: "success" });
     } catch {
-      alert("Errore nell'eliminazione dell'utente");
+      setToast({
+        message: "Errore nell'eliminazione dell'utente",
+        type: "error",
+      });
     } finally {
       setShowDeleteModal(false);
       setUserToDelete(null);
     }
   };
+  const closeToast = () => setToast(null);
 
   if (loading)
     return (
@@ -129,6 +140,15 @@ function AdminPage() {
           </tbody>
         </table>
       </div>
+      <div className="flex justify-center mb-4">
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="content-center my-1 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-4 py-2 rounded-md transition focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          aria-label="Torna alla Dashboard"
+        >
+          Torna alla Dashboard
+        </button>
+      </div>
 
       {showDeleteModal && (
         <div
@@ -167,6 +187,9 @@ function AdminPage() {
         <p className="text-center mt-6 text-indigo-400 text-lg">
           Nessun utente trovato.
         </p>
+      )}
+      {toast && (
+        <Toast message={toast.message} type={toast.type} onClose={closeToast} />
       )}
     </div>
   );
