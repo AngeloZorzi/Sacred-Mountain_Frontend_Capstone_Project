@@ -8,6 +8,7 @@ import AdminPage from "./components/AdminPage";
 import LandingPage from "./components/LandingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+import GameView from "./components/GameView";
 
 export default function App() {
   return (
@@ -30,6 +31,14 @@ export default function App() {
             <AdminRoute>
               <AdminPage />
             </AdminRoute>
+          }
+        />
+        <Route
+          path="/game"
+          element={
+            <ProtectedRoute>
+              <GameView />
+            </ProtectedRoute>
           }
         />
         <Route path="/landing" element={<LandingPage />} />

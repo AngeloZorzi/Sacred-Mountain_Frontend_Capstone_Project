@@ -26,20 +26,24 @@ function LandingPage() {
       </h1>
 
       <div className="flex flex-col space-y-6 w-full max-w-xs sm:max-w-sm">
-        {["Nuova Partita", "Carica Partita", "Dashboard"].map((label, i) => {
-          const paths = ["/game/new", "/game/load", "/dashboard"];
-          return (
-            <button
-              key={label}
-              onClick={() => navigate(paths[i])}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-400"
-              aria-label={label}
-              tabIndex={0}
-            >
-              {label}
-            </button>
-          );
-        })}
+        <button
+          onClick={() => navigate("/game?mode=start")}
+          className="bg-indigo-500 hover:bg-indigo-600 py-4 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          Nuova Partita
+        </button>
+        <button
+          onClick={() => navigate("/game?mode=load")}
+          className="bg-indigo-500 hover:bg-indigo-600  py-4 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+        >
+          Carica Partita
+        </button>
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="bg-red-400 hover:bg-red-500 py-4 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-400"
+        >
+          Dashboard
+        </button>
       </div>
     </div>
   );

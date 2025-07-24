@@ -1,0 +1,16 @@
+.sprite-container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  margin: 2rem auto;
+  display: block;
+  width: 341px;
+  height: 341px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.sprite-container:hover {
+  transform: scale(1.02);
+}
