@@ -93,6 +93,12 @@ _Credits_
 - Animazioni create da Angelo Zorzi (that's Me!) tramite Piskel.
 - Story made by Angelo Zorzi (that's Me!)
 
+_Screenshots_
+![Sacred Mountain](./screenshots/sacredmountain.png)
+![Sacred Mountain](./screenshots/login.png)
+![Sacred Mountain](./screenshots/welcome.png)
+![Sacred Mountain](./screenshots/dashboard.png)
+
 _Contatti_
 
 - email: astro.drg666@gmail.com
